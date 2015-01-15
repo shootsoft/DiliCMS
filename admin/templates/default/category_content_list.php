@@ -35,7 +35,7 @@
 			<tbody>
             <?php foreach($provider['list'] as $v) : ?>
             	<tr>
-                	<td><input type="checkbox" name="classid[]" value="<?php echo $v->classid; ?>" /></td>
+                	<td><input type="checkbox" name="classid[]" value="<?php echo $v->classid; ?>" /><?php echo $v->classid; ?></td>
                 	<?php foreach($model['listable'] as $vt): ?>
                     <td>
                     <?php $this->field_behavior->on_list($model['fields'][$vt],$v); ?>
@@ -60,7 +60,7 @@
 <script language="javascript">
 	var confirm_str = '是否要删除所选分类？\n此操作还会删除该分类下属分类，以及这些分类的附件等关联信息!';
 	$('a.confirm_delete').click(function(){
-		return confirm(confirm_str);	
+		return confirm(confirm_str);
 	});
 	function multi_delete()
 	{
@@ -73,11 +73,11 @@
 		{
 			if(confirm(confirm_str))
 			{
-				$('#category_content_list_form').submit();	
+				$('#category_content_list_form').submit();
 			}
 			else
 			{
-				return false;	
+				return false;
 			}
 		}
 	}

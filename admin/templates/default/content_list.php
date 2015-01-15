@@ -59,7 +59,7 @@
 			<tbody>
             <?php foreach($provider['list'] as $v) : ?>
             	<tr>
-                	<td><input type="checkbox" name="id[]" value="<?php echo $v->id; ?>" /></td>
+                	<td><input type="checkbox" name="id[]" value="<?php echo $v->id; ?>" /><?php echo $v->id; ?></td>
                 	<td><?php echo date('Y-m-d', $v->create_time); ?></td>
 					<?php foreach($model['listable'] as $vt): ?>
                     <td>
@@ -81,7 +81,7 @@
 <script language="javascript">
 	var confirm_str = '是否要删除所选信息？\n此操作还会删除附件等关联信息!';
 	$('a.confirm_delete').click(function(){
-		return confirm(confirm_str);	
+		return confirm(confirm_str);
 	});
 	function multi_delete()
 	{
@@ -98,7 +98,7 @@
 			}
 			else
 			{
-				return false;	
+				return false;
 			}
 		}
 	}

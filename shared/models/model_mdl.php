@@ -36,7 +36,7 @@ class Model_mdl extends CI_Model
 	{
 		parent::__construct();
 	}
-	
+
 	// ------------------------------------------------------------------------
 
     /**
@@ -47,7 +47,7 @@ class Model_mdl extends CI_Model
      */
 	public function get_models()
 	{
-		return $this->db->get($this->db->dbprefix('models'))->result();	
+		return $this->db->get($this->db->dbprefix('models'))->result();
 	}
 
 	// ------------------------------------------------------------------------
@@ -61,7 +61,7 @@ class Model_mdl extends CI_Model
      */
 	public function get_model_by_id($id)
 	{
-		return $this->db->where('id', $id)->get($this->db->dbprefix('models'))->row();	
+		return $this->db->where('id', $id)->get($this->db->dbprefix('models'))->row();
 	}
 
 	// ------------------------------------------------------------------------
@@ -98,14 +98,14 @@ class Model_mdl extends CI_Model
 			$this->dbforge->add_key('id', TRUE);
 			$this->dbforge->add_field(array('create_time' => array('type' => 'INT', 'constraint' => 10, 'unsigned' => TRUE, 'default' => 0)));
 			$this->dbforge->add_field(array('update_time' => array('type' => 'INT', 'constraint' => 10, 'unsigned' => TRUE, 'default' => 0)));
-			$this->dbforge->add_field(array('create_user' => array('type' => 'TINYINT', 'constraint' => 10, 'unsigned' => TRUE, 'default' => 0)));
-			$this->dbforge->add_field(array('update_user' => array('type' => 'TINYINT', 'constraint' => 10, 'unsigned' => TRUE, 'default' => 0)));
+			$this->dbforge->add_field(array('create_user' => array('type' => 'INT', 'constraint' => 10, 'unsigned' => TRUE, 'default' => 0)));
+			$this->dbforge->add_field(array('update_user' => array('type' => 'INT', 'constraint' => 10, 'unsigned' => TRUE, 'default' => 0)));
 			$this->dbforge->create_table($table);
 			return TRUE;
 		}
 		return FALSE;
 	}
-	
+
 	// ------------------------------------------------------------------------
 
     /**
@@ -131,7 +131,7 @@ class Model_mdl extends CI_Model
 		}
 		return FALSE;
 	}
-	
+
 	// ------------------------------------------------------------------------
 
     /**
@@ -156,7 +156,7 @@ class Model_mdl extends CI_Model
 								->result();
 		foreach($attachments as $attachment)
 		{
-			$this->platform->file_delete(DILICMS_SHARE_PATH . '../' . setting('attachment_dir') . '/' . $attachment->folder . '/' . $attachment->name . '.' . $attachment->type);		
+			$this->platform->file_delete(DILICMS_SHARE_PATH . '../' . setting('attachment_dir') . '/' . $attachment->folder . '/' . $attachment->name . '.' . $attachment->type);
 		}
 		$this->db->where('model', $model->id)->where('from', 0)->delete($this->db->dbprefix('attachments'));
 		//删除记录
@@ -164,7 +164,7 @@ class Model_mdl extends CI_Model
 		//清除缓存文件
 		$this->platform->cache_delete(DILICMS_SHARE_PATH . 'settings/model/' . $model->name . '.php');
 	}
-	
+
 	// ------------------------------------------------------------------------
 
     /**
@@ -178,7 +178,7 @@ class Model_mdl extends CI_Model
 	{
 		return $this->db->where('model', $id)->order_by('order', 'ASC')->get($this->db->dbprefix('model_fields'))->result();
 	}
-	
+
 	// ------------------------------------------------------------------------
 
     /**
@@ -213,7 +213,7 @@ class Model_mdl extends CI_Model
      */
 	public function get_field_by_id($id)
 	{
-		return $this->db->where('id', $id)->get($this->db->dbprefix('model_fields'))->row();	
+		return $this->db->where('id', $id)->get($this->db->dbprefix('model_fields'))->row();
 	}
 
 	// ------------------------------------------------------------------------
@@ -227,7 +227,7 @@ class Model_mdl extends CI_Model
      */
 	public function get_field_by_name($name)
 	{
-		return $this->db->where('name', $name)->get($this->db->dbprefix('model_fields'))->row();	
+		return $this->db->where('name', $name)->get($this->db->dbprefix('model_fields'))->row();
 	}
 
 	// ------------------------------------------------------------------------
@@ -242,7 +242,7 @@ class Model_mdl extends CI_Model
      */
 	public function check_field_unique($model, $name)
 	{
-		return $this->db->where('model', $model)->where('name', $name)->get($this->db->dbprefix('model_fields'))->row();	
+		return $this->db->where('model', $model)->where('name', $name)->get($this->db->dbprefix('model_fields'))->row();
 	}
 
 	// ------------------------------------------------------------------------
